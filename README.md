@@ -1,4 +1,4 @@
-# Reservamo challengue
+# Reservamo challenge
 
 Una aplicación para saber el clima por ciudad buscada.
 
