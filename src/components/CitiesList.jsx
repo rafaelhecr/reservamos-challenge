@@ -25,14 +25,13 @@ const CardExpandibleComponent = ({ city }) => {
         setExpanded(isExpanded ? panel : null);
     };
 
-
     return (
         <Grid item xs={12} sm={6} md={6 } key={city.id}>
             <Card sx={{ minWidth: 250  }}>
                 <CardContent>
                     <Grid item xs={12}>
-                    {city?.weather?.list[0]?.weather[0]?.icon ?
-                        <img src={`https://openweathermap.org/img/wn/${city?.weather?.list[0]?.weather[0]?.icon}@2x.png`} alt="" srcset="" />
+                    {city?.weather[0]?.icon ?
+                        <img src={`https://openweathermap.org/img/wn/${city?.weather[0]?.icon}@2x.png`} alt="" srcset="" />
                         : null
                     }
                     </Grid>
@@ -46,7 +45,7 @@ const CardExpandibleComponent = ({ city }) => {
                     </Grid>
                     <Grid item xs={12}>
                         <Typography variant='h4' component="h4">
-                            {city?.weather?.list[0].main.temp}°C
+                            {city?.weather[0]?.temp}°C
                         </Typography>
                     </Grid>
                 </CardContent>
@@ -72,17 +71,17 @@ const CardExpandibleComponent = ({ city }) => {
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {city?.weather?.list.map((row) => (
+                                        {city?.weather?.map((row) => (
                                             <TableRow
-                                                key={row.main.temp + row.dt_txt}
+                                                key={row.temp + row.date}
                                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                             >
                                                 <TableCell component="th" scope="row">
-                                                    {row.dt_txt}
+                                                    {row.date}
                                                 </TableCell>
-                                                <TableCell align="right">{row.main.temp} °C</TableCell>
-                                                <TableCell align="right">{row.main.temp_min} °C</TableCell>
-                                                <TableCell align="right">{row.main.temp_max} °C</TableCell>
+                                                <TableCell align="right">{row.temp} °C</TableCell>
+                                                <TableCell align="right">{row.temp_min} °C</TableCell>
+                                                <TableCell align="right">{row.temp_max} °C</TableCell>
                                             </TableRow>
                                         ))}
                                     </TableBody>

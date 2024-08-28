@@ -6,6 +6,8 @@ const UNITS = "metric"
 const LANG = "es"
 
 async function getCityForecast(lat, lon){
+    console.log("LAT", lat)
+    console.log("LON", lon)
     try {
         const response = await axios.get(`${FORECAST_URL}?appid=${APP_ID}&units=${UNITS}&lang=${LANG}&lat=${lat}&lon=${lon}`);
         return response.data;
